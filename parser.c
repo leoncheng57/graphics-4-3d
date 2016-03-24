@@ -89,7 +89,7 @@ void parse_file ( char * filename,
   while ( fgets(line, 255, f) != NULL ) {
     line[strlen(line)-1]='\0';
     //printf(":%s:\n",line);
-    double x, y, z, x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4;
+    double x, y, z, x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, r;
 
 
     if ( strncmp(line, "line", strlen(line)) == 0 ) {
@@ -100,6 +100,17 @@ void parse_file ( char * filename,
       sscanf(line, "%lf %lf %lf %lf %lf %lf", &x, &y, &z, &x1, &y1, &z1);
       add_edge(pm, x, y, z, x1, y1, z1);
       // printf( "%lf %lf %lf %lf %lf %lf\n", x, y, z, x1, y1, z1);
+    }
+    else if ( strncmp(line, "box", strlen(line)) == 0 ) {
+      fgets(line, 255, f);
+      sscanf(line, "&lf %lf %lf %lf %lf %lf", x, y, z, x1, y1, z1);
+      add_box(pm, x, y, z, x1, y1, z1);
+    }
+    else if ( strncmp(line, "sphere", strlen(line)) == 0 ){
+      fgets(line, 255, f);
+      sscanf(line, "%lf %lf %lf", x, y, r);
+      double step = 10;
+      generate_sphere(pm, x, y, r, step);
     }
     else if ( strncmp(line, "circle", strlen(line)) == 0 ) {
       //printf("CIRCLE\n");
@@ -174,6 +185,9 @@ void parse_file ( char * filename,
       //print_matrix( transform );
       //      print_matrix(pm);
       matrix_mult(transform, pm);
+    }
+    else if ( strncmp(line, "clear", strlen(line)) == 0 ) {
+      clear_screen(s);
     }
     else if ( strncmp(line, "display", strlen(line)) == 0 ) {
       clear_screen(s);
