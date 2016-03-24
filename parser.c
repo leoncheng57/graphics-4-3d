@@ -11,31 +11,31 @@
 
 
 /*======== void parse_file () ==========
-Inputs:   char * filename 
-          struct matrix * transform, 
+Inputs:   char * filename
+          struct matrix * transform,
           struct matrix * pm,
           screen s
-Returns: 
+Returns:
 
 Goes through the file named filename and performs all of the actions listed in that file.
 The file follows the following format:
      Every command is a single character that takes up a line
      Any command that requires arguments must have those arguments in the second line.
      The commands are as follows:
-         line: add a line to the edge matrix - 
+         line: add a line to the edge matrix -
 	    takes 6 arguemnts (x0, y0, z0, x1, y1, z1)
-	 circle: add a circle to the edge matrix - 
+	 circle: add a circle to the edge matrix -
 	    takes 3 arguments (cx, cy, r)
 	 hermite: add a hermite curve to the edge matrix -
 	    takes 8 arguments (x0, y0, x1, y1, x2, y2, x3, y3)
 	 bezier: add a bezier curve to the edge matrix -
 	    takes 8 arguments (x0, y0, x1, y1, x2, y2, x3, y3)
-	 ident: set the transform matrix to the identity matrix - 
-	 scale: create a scale matrix, 
-	    then multiply the transform matrix by the scale matrix - 
+	 ident: set the transform matrix to the identity matrix -
+	 scale: create a scale matrix,
+	    then multiply the transform matrix by the scale matrix -
 	    takes 3 arguments (sx, sy, sz)
-	 translate: create a translation matrix, 
-	    then multiply the transform matrix by the translation matrix - 
+	 translate: create a translation matrix,
+	    then multiply the transform matrix by the translation matrix -
 	    takes 3 arguments (tx, ty, tz)
 	 xrotate: create an x-axis rotation matrix,
 	    then multiply the transform matrix by the rotation matrix -
@@ -46,7 +46,7 @@ The file follows the following format:
 	 zrotate: create an z-axis rotation matrix,
 	    then multiply the transform matrix by the rotation matrix -
 	    takes 1 argument (theta)
-	 apply: apply the current transformation matrix to the 
+	 apply: apply the current transformation matrix to the
 	    edge matrix
 	 display: draw the lines of the edge matrix to the screen
 	    display the screen
@@ -64,8 +64,8 @@ humans use degrees, so the file will contain degrees for rotations,
 be sure to conver those degrees to radians (M_PI is the constant
 for PI)
 ====================*/
-void parse_file ( char * filename, 
-                  struct matrix * transform, 
+void parse_file ( char * filename,
+                  struct matrix * transform,
                   struct matrix * pm,
                   screen s) {
 
@@ -78,20 +78,20 @@ void parse_file ( char * filename,
   g.red = 255;
   g.green = 0;
   g.blue = 255;
-  
+
   clear_screen(s);
 
-  if ( strcmp(filename, "stdin") == 0 ) 
+  if ( strcmp(filename, "stdin") == 0 )
     f = stdin;
   else
     f = fopen(filename, "r");
-  
+
   while ( fgets(line, 255, f) != NULL ) {
     line[strlen(line)-1]='\0';
     //printf(":%s:\n",line);
     double x, y, z, x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4;
-   
-    
+
+
     if ( strncmp(line, "line", strlen(line)) == 0 ) {
       //      printf("LINE!\n");
       fgets(line, 255, f);
@@ -107,7 +107,7 @@ void parse_file ( char * filename,
       sscanf(line, "%lf %lf %lf", &x, &y, &z);
       add_circle(pm, x, y, z, 0.01);
       //printf( "%lf %lf %lf\n", x, y, z);
-    }    
+    }
     else if ( strncmp(line, "bezier", strlen(line)) == 0 ) {
       //printf("BEZIER\n");
       fgets(line, 255, f);
@@ -115,7 +115,7 @@ void parse_file ( char * filename,
 	     &x1, &y1, &x2, &y2, &x3, &y3, &x4, &y4);
       add_curve(pm, x1, y1, x2, y2, x3, y3, x4, y4, 0.01, BEZIER_MODE );
       //printf( "%lf %lf %lf\n", x, y, z);
-    }    
+    }
     else if ( strncmp(line, "hermite", strlen(line)) == 0 ) {
       //printf("HERMITE\n");
       fgets(line, 255, f);
@@ -123,11 +123,11 @@ void parse_file ( char * filename,
 	     &x1, &y1, &x2, &y2, &x3, &y3, &x4, &y4);
       add_curve(pm, x1, y1, x2, y2, x3, y3, x4, y4, 0.01, HERMITE_MODE );
       //printf( "%lf %lf %lf\n", x, y, z);
-    }    
+    }
     else if ( strncmp(line, "scale", strlen(line)) == 0 ) {
       //printf("SCALE\n");
       fgets(line, 255, f);
-      //line[strlen(line)-1]='\0';      
+      //line[strlen(line)-1]='\0';
       sscanf(line, "%lf %lf %lf", &x, &y, &z);
       tmp = make_scale(x, y, z);
       matrix_mult(tmp, transform);
@@ -136,7 +136,7 @@ void parse_file ( char * filename,
     else if ( strncmp(line, "translate", strlen(line)) == 0 ) {
       //printf("TRANSLATE\n");
       fgets(line, 255, f);
-      //      line[strlen(line)-1]='\0';      
+      //      line[strlen(line)-1]='\0';
       sscanf(line, "%lf %lf %lf", &x, &y, &z);
       tmp = make_translate(x, y, z);
       matrix_mult(tmp, transform);
@@ -194,10 +194,8 @@ void parse_file ( char * filename,
       printf("Invalid command\n");
     }
   }
-  
+
   free_matrix(tmp);
   fclose(f);
   //printf("END PARSE\n");
 }
-
-  
