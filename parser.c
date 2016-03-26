@@ -89,7 +89,7 @@ void parse_file ( char * filename,
   while ( fgets(line, 255, f) != NULL ) {
     line[strlen(line)-1]='\0';
     //printf(":%s:\n",line);
-    double x, y, z, x1, y1, z1, x2, y2, x3, y3, x4, y4, r;
+    double x, y, z, x1, y1, z1, x2, y2, x3, y3, x4, y4, r1, r2;
 
 
     if ( strncmp(line, "line", strlen(line)) == 0 ) {
@@ -108,9 +108,15 @@ void parse_file ( char * filename,
     }
     else if ( strncmp(line, "sphere", strlen(line)) == 0 ){
       fgets(line, 255, f);
-      sscanf(line, "%lf %lf %lf", &x, &y, &r);
-      double step = 10;
-      generate_sphere(pm, x, y, r, step);
+      sscanf(line, "%lf %lf %lf", &x, &y, &r1);
+      double step = 100; //This will affect how many points show up for the sphere (higher step => more detailed sphere)
+      generate_sphere(pm, x, y, r1, step);
+    }
+    else if ( strncmp(line, "torus", strlen(line)) == 0 ){
+      fgets(line, 255, f);
+      sscanf(line, "%lf %lf %lf %lf", &x, &y, &r1, &r2);
+      double step = 100; //This will affect how many points show up for the torus (higher step => more detailed torus)
+      generate_torus(pm, x, y, r1, r2, step);
     }
     else if ( strncmp(line, "circle", strlen(line)) == 0 ) {
       //printf("CIRCLE\n");
