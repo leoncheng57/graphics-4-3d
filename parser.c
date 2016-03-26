@@ -187,7 +187,7 @@ void parse_file ( char * filename,
       matrix_mult(transform, pm);
     }
     else if ( strncmp(line, "clear", strlen(line)) == 0 ) {
-      clear_screen(s);
+      pm = new_matrix(4, 4);
     }
     else if ( strncmp(line, "display", strlen(line)) == 0 ) {
       clear_screen(s);
