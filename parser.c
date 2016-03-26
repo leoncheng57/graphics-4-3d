@@ -89,7 +89,7 @@ void parse_file ( char * filename,
   while ( fgets(line, 255, f) != NULL ) {
     line[strlen(line)-1]='\0';
     //printf(":%s:\n",line);
-    double x, y, z, x1, y1, z1, x2, y2, z2, x3, y3, z3, x4, y4, z4, r;
+    double x, y, z, x1, y1, z1, x2, y2, x3, y3, x4, y4, r;
 
 
     if ( strncmp(line, "line", strlen(line)) == 0 ) {
@@ -103,12 +103,12 @@ void parse_file ( char * filename,
     }
     else if ( strncmp(line, "box", strlen(line)) == 0 ) {
       fgets(line, 255, f);
-      sscanf(line, "&lf %lf %lf %lf %lf %lf", x, y, z, x1, y1, z1);
+      sscanf(line, "%lf %lf %lf %lf %lf %lf", &x, &y, &z, &x1, &y1, &z1);
       add_box(pm, x, y, z, x1, y1, z1);
     }
     else if ( strncmp(line, "sphere", strlen(line)) == 0 ){
       fgets(line, 255, f);
-      sscanf(line, "%lf %lf %lf", x, y, r);
+      sscanf(line, "%lf %lf %lf", &x, &y, &r);
       double step = 10;
       generate_sphere(pm, x, y, r, step);
     }
