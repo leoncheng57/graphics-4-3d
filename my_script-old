@@ -1,96 +1,100 @@
-# COLOR
+# CIRCLES
 color
 255 255 255
-# CIRCLES
+clear
+circle
+250 250 10
 ident
 translate
-0 0 220
-apply
-circle
-0 0 60
-ident
-translate
-0 0 -20
-apply
-circle
-0 0 50
-ident
-translate
-0 0 -20
-apply
-circle
 0 0 40
-ident
-translate
-0 0 -20
 apply
 circle
-0 0 30
+250 250 20
 ident
 translate
-0 0 -20
-apply
-circle
-0 0 20
-ident
-translate
-0 0 -20
-apply
-circle
-0 0 10
-ident
-translate
-0 0 -20
-apply
-circle
-0 0 20
-ident
-translate
-0 0 -20
-apply
-circle
-0 0 30
-ident
-translate
-0 0 -20
-apply
-circle
 0 0 40
-ident
-translate
-0 0 -20
 apply
 circle
-0 0 50
+250 250 30
 ident
 translate
-0 0 -20
+0 0 40
 apply
 circle
-0 0 60
+250 250 40
 ident
 translate
-0 0 -20
+0 0 40
+apply
+circle
+250 250 50
+ident
+translate
+0 0 -160
+apply
+circle
+250 250 20
+ident
+translate
+0 0 -40
+apply
+circle
+250 250 30
+ident
+translate
+0 0 -40
+apply
+circle
+250 250 40
+ident
+translate
+0 0 -40
+apply
+circle
+250 250 50
+ident
+translate
+0 0 -40
 apply
 ident
 translate
-0 0 120
+0 0 400
 apply
-# SPHERE
-sphere
-0 0 20
-# ROTATE
+# LINES
+line
+250 250 0 250 250 400
+# ROTATE CIRCLES
 ident
-xrotate
+yrotate
 90
+translate
+400 0 0
+apply
+ident
+translate
+-250 -250 0
+zrotate
+-90
+translate
+250 250 0
+apply
+# MAKING TORUS
+torus
+250 325 35 175
+ident 
+translate
+-25 0 0
+apply
+ident
+# translate
+# -250 -250 0
 # zrotate
-# -45
-# yrotate
-# 45
+# 30
+# xrotate
+# 30
 # translate
 # 250 250 0
 apply
-# DISPLAY AND SAVE
 display
 save
 cool.png
