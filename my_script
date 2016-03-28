@@ -3,38 +3,20 @@ color
 255 100 255
 # LINE
 line
-0 0 -340 0 0 40
+0 0 -320 0 0 20
 # CIRCLES
 ident
 translate
 0 0 300
 apply
 circle
-0 0 80
-ident
-translate
-0 0 -20
-apply
-circle
-0 0 70
-ident
-translate
-0 0 -20
-apply
-circle
-0 0 60
-ident
-translate
-0 0 -20
-apply
-circle
-0 0 50
-ident
-translate
-0 0 -20
-apply
-circle
 0 0 40
+ident
+translate
+0 0 -20
+apply
+circle
+0 0 35
 ident
 translate
 0 0 -20
@@ -46,7 +28,19 @@ translate
 0 0 -20
 apply
 circle
+0 0 25
+ident
+translate
+0 0 -20
+apply
+circle
 0 0 20
+ident
+translate
+0 0 -20
+apply
+circle
+0 0 15
 ident
 translate
 0 0 -20
@@ -58,7 +52,31 @@ translate
 0 0 -20
 apply
 circle
+0 0 10
+ident
+translate
+0 0 -20
+apply
+circle
+0 0 15
+ident
+translate
+0 0 -20
+apply
+circle
 0 0 20
+ident
+translate
+0 0 -20
+apply
+circle
+0 0 25
+ident
+translate
+0 0 -20
+apply
+circle
+0 0 25
 ident
 translate
 0 0 -20
@@ -69,41 +87,23 @@ ident
 translate
 0 0 -20
 apply
+ident
+circle
+0 0 35
+ident
+translate
+0 0 -20
+apply
+ident
 circle
 0 0 40
 ident
 translate
 0 0 -20
 apply
-circle
-0 0 50
 ident
 translate
-0 0 -20
-apply
-circle
-0 0 60
-ident
-translate
-0 0 -20
-apply
-ident
-circle
-0 0 70
-ident
-translate
-0 0 -20
-apply
-ident
-circle
-0 0 80
-ident
-translate
-0 0 -20
-apply
-ident
-translate
-0 0 160
+0 0 170
 apply
 # SPHERE
 sphere
