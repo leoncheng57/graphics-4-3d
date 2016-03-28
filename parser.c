@@ -119,7 +119,7 @@ void parse_file ( char * filename,
     else if ( strncmp(line, "sphere", strlen(line)) == 0 ){
       fgets(line, 255, f);
       sscanf(line, "%lf %lf %lf", &x, &y, &r1);
-      double step = 100; //This will affect how many points show up for the sphere (higher step => more detailed sphere)
+      double step = 15; //This will affect how many points show up for the sphere (higher step => more detailed sphere)
       generate_sphere(pm, x, y, r1, step);
     }
     else if ( strncmp(line, "torus", strlen(line)) == 0 ){
