@@ -101,6 +101,16 @@ void parse_file ( char * filename,
       add_edge(pm, x, y, z, x1, y1, z1);
       // printf( "%lf %lf %lf %lf %lf %lf\n", x, y, z, x1, y1, z1);
     }
+    else if ( strncmp(line, "#", 1) == 0 ) {
+    printf("%s\n", line);
+    }
+    else if ( strncmp(line, "color", strlen(line)) == 0 ) {
+      fgets(line, 255, f);
+      sscanf(line, "%lf %lf %lf", &x, &y, &z);
+      g.red = x;
+      g.green = y;
+      g.blue = z;
+    }
     else if ( strncmp(line, "box", strlen(line)) == 0 ) {
       fgets(line, 255, f);
       sscanf(line, "%lf %lf %lf %lf %lf %lf", &x, &y, &z, &x1, &y1, &z1);
