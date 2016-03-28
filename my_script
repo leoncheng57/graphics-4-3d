@@ -79,16 +79,27 @@ apply
 # SPHERE
 sphere
 0 0 20
+# TORUS
+ident
+xrotate
+90
+apply
+torus
+0 0 40 175
+ident
+xrotate
+-90
+apply
 # ROTATE
 ident
 xrotate
 90
-# zrotate
-# -45
-# yrotate
-# 45
-# translate
-# 250 250 0
+zrotate
+-45
+yrotate
+45
+translate
+250 250 0
 apply
 # DISPLAY AND SAVE
 display
