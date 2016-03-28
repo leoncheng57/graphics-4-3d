@@ -1,6 +1,9 @@
 # COLOR
 color
 255 255 255
+# LINE
+line
+0 0 -270 0 0 50
 # CIRCLES
 ident
 translate
@@ -95,9 +98,9 @@ ident
 xrotate
 90
 zrotate
--45
+-40
 yrotate
-45
+30
 translate
 250 250 0
 apply
